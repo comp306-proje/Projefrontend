@@ -89,7 +89,7 @@ function App() {
             <div id="box1" className="RightBox">
 
                 <header>
-                    <h1>
+                    <h1 style={{ color: 'white' }}>
                         Advanced Options
                     </h1>
                 </header>
@@ -110,24 +110,24 @@ function App() {
             <div id="box2" className="RightBox">
 
                 <header>
-                    <h1>
+                    <h1 style={{ color: 'white' }}>
                         Basic Operations
                     </h1>
                 </header>
 
                 <form onSubmit={handleSubmit}>
 
-                    <label>
+                    <label style={{ color: 'white' }}>
                         Name:
                         <input type="text" value={nameOfUser} onChange={(e) => setName(e.target.value)} />
                     </label>
 
-                    <label>
+                    <label style={{ color: 'white' }}>
                         NickName:
                         <input type="text" value={nickNameOfUser} onChange={(e) => setNickName(e.target.value)} />
                     </label>
 
-                    <label>
+                    <label style={{ color: 'white' }}>
                         Gender:
                         <select value={genderOfUser} onChange={(e) => setGender(e.target.value)}>
                             <option value=""></option>
@@ -144,8 +144,8 @@ function App() {
 
             <div id="box3" className="LeftBox">
                 <header>
-                    <h1>
-                        OUTPUT:
+                    <h1 style={{ color: 'white' }}>
+                        OUTPUT: 
                     </h1>
                 </header>
                 {/* Add your content here */}

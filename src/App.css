@@ -4,7 +4,10 @@
 }
 
 body {
-    background-color: lightslategray;
+   background-color: lightslategray; 
+  
+   background-image: url('./bgImageUS.jpeg');
+   background-size: cover;
 }
 
 .App-header {
@@ -32,29 +35,30 @@ button {
     width: 30%;
     height: 1000%;
     padding: 1%;
-    border: 3px solid black;
+    border: 3px solid rgb(0 255 33);
     box-sizing: border-box;
     border-radius: 20px;
     overflow: auto;
     display: flex;
     flex-direction: column;
+    padding: 10px;
 }
 
     .RightBox::-webkit-scrollbar {
-        width: 20px; /* Adjust the width to make the scrollbar thinner */
+        width: 20px; 
     }
 
 
 #box1 {
     position: absolute;
-    top: 55%; /* Adjust top positioning */
-    right: 1%; /* Adjust right positioning */
+    top: 55%; 
+    right: 1%; 
 }
 
 #box2 {
     position: absolute;
-    top: 1100%; /* Adjust top positioning */
-    right: 1%; /* Adjust right positioning */
+    top: 1100%;
+    right: 1%; 
 }
 
 .ItemContainer {
@@ -67,7 +71,7 @@ button {
     width: 66%;
     height: 1800%;
     padding: 1%;
-    border: 3px solid black;
+    border: 1px groove rgb(0 255 33);
     box-sizing: border-box;
     border-radius: 20px;
     overflow: auto;
@@ -76,13 +80,14 @@ button {
     position: absolute;
     top: 310%;
     left: 1%;
+    padding: 10px;
 }
 
 .BottomBox {
     width: 30%;
     height: 1000%;
     padding: 1%;
-    border: 3px solid black;
+    border: 3px solid green;
     box-sizing: border-box;
     border-radius: 20px;
     overflow: auto;
