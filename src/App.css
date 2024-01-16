@@ -1,38 +1,94 @@
 .App {
-  text-align: center;
+    position: relative; /* Set relative positioning on the container */
+    padding: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+    background-color: lightslategray;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #282c34;
+    color: white;
+    width: 50%;
+    position: absolute;
+    top: 20%;
+    right: 40%;
 }
 
-.App-link {
-  color: #61dafb;
+button {
+    /*
+        margin-top: 150px; 
+    */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.ScrollPane {
+    overflow-y: auto;
+    width: 30%;
+    padding: 10%;
+}
+
+.RightBox {
+    width: 30%;
+    height: 1000%;
+    padding: 1%;
+    border: 3px solid black;
+    box-sizing: border-box;
+    border-radius: 20px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+    .RightBox::-webkit-scrollbar {
+        width: 20px; /* Adjust the width to make the scrollbar thinner */
+    }
+
+
+#box1 {
+    position: absolute;
+    top: 55%; /* Adjust top positioning */
+    right: 1%; /* Adjust right positioning */
+}
+
+#box2 {
+    position: absolute;
+    top: 1100%; /* Adjust top positioning */
+    right: 1%; /* Adjust right positioning */
+}
+
+.ItemContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5%;
+}
+.LeftBox {
+    width: 66%;
+    height: 1800%;
+    padding: 1%;
+    border: 3px solid black;
+    box-sizing: border-box;
+    border-radius: 20px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 310%;
+    left: 1%;
+}
+
+.BottomBox {
+    width: 30%;
+    height: 1000%;
+    padding: 1%;
+    border: 3px solid black;
+    box-sizing: border-box;
+    border-radius: 20px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 1100%;
+    left: 1%;
 }
