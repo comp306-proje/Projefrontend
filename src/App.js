@@ -18,7 +18,7 @@ function App() {
   
       fetchData();
     }, []);*/
-
+    
     const fetchData = async (numberParam) => {
         try {
             const response = await fetch(`http://localhost:3001/api/data?number=${numberParam}`);
@@ -28,32 +28,6 @@ function App() {
             console.error('Error fetching data:', error);
         }
     };
-
-
-
-
-    /*const colors = [
-        'red', 'green', 'blue', 'yellow', 'purple',
-        'orange', 'pink', 'brown', 'gray', 'cyan',
-        'magenta', 'violet', 'indigo', 'turquoise', 'gold',
-        'silver', 'black', 'white', 'lime', 'olive',
-        'navy', 'maroon', 'teal', 'coral', 'salmon',
-        'lavender', 'tan', 'khaki', 'plum', 'beige',
-        'orchid', 'skyblue', 'peach', 'tomato', 'peru',
-        'slategray', 'darkorange', 'lightcoral', 'cornflowerblue', 'mediumseagreen',
-        'burlywood', 'cadetblue', 'chocolate', 'crimson', 'darkcyan',
-        'darkgoldenrod', 'darkolivegreen', 'darkorchid', 'darkslateblue', 'darkslategray',
-        'darkturquoise', 'deepskyblue', 'forestgreen', 'fuchsia', 'goldenrod',
-        'greenyellow', 'hotpink', 'indianred', 'lawngreen', 'lightblue',
-        'lightgreen', 'lightpink', 'lightsalmon', 'lightseagreen', 'lightskyblue',
-        'lightsteelblue', 'limegreen', 'mediumaquamarine', 'mediumblue', 'mediumorchid',
-        'mediumpurple', 'mediumturquoise', 'mediumvioletred', 'midnightblue', 'mistyrose',
-        'navajowhite', 'oldlace', 'olivedrab', 'orangered', 'palegoldenrod',
-        'palegreen', 'paleturquoise', 'palevioletred', 'peachpuff', 'powderblue',
-        'rosybrown', 'royalblue', 'saddlebrown', 'seagreen', 'sienna',
-        'springgreen', 'steelblue', 'thistle', 'tomato', 'wheat',
-        'yellowgreen'
-    ];*/
 
 
     const handleClick = () => {
@@ -302,12 +276,7 @@ function App() {
 
 
 
-                {data.map((item, index) => (
-                    <div key={index} className="ItemContainer">
-                        <p>{item.code}</p>
-                        <button onClick={handleClick}>Click Me</button>
-                    </div>
-                ))}
+               
             </div>
 
 
@@ -353,6 +322,18 @@ function App() {
                         Retrieval Terminal: 
                     </h1>
                 </header>
+
+
+                {data.map((item, index) => (
+                    <div key={index} className="ItemContainer">
+                        {Object.keys(item).map((column, columnIndex) => (
+                            <div key={columnIndex} style={{ color: 'white' }}>
+                                {item[column]}
+                            </div>
+                        ))}
+                    </div>
+                ))}
+
                 {/* Add your content here */}
             </div>
 
