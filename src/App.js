@@ -509,7 +509,7 @@ function App() {
                 {data.map((item, index) => (
                     <div key={index} className="ItemContainer">
                         {Object.keys(item).map((column, columnIndex) => (
-                            <div key={columnIndex} style={{ color: 'white' }}>
+                            <div key={columnIndex} className="Column" style={{ color: "white", width: '150px'}}>
                                 {item[column]}
                             </div>
                         ))}
