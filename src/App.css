@@ -71,7 +71,7 @@ button {
     width: 66%;
     height: 1800%;
     padding: 1%;
-    border: 1px groove rgb(0 255 33);
+    border: 3px groove rgb(0 255 33);
     box-sizing: border-box;
     border-radius: 20px;
     overflow: auto;
@@ -82,6 +82,9 @@ button {
     left: 1%;
     padding: 10px;
 }
+    .LeftBox::-webkit-scrollbar {
+        width: 20px;
+     }
 
 .BottomBox {
     width: 30%;
