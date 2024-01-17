@@ -81,11 +81,19 @@ function App() {
     return (
 
         <div className="App">
-            <header className="App-header">
-                <h1>KU SIKOTIFAY</h1>
+            <header className="App-header" style={{
+                background: 'transparent', // Gradient background
+                textAlign: 'center',  // Center align text
+                padding: '10px',      // Add some padding
+                color: 'white',       // Text color
+                fontFamily: 'Comic Sans MS, cursive', // Apply the custom font
+                fontWeight: 'bold',   // Adjust font weight if needed
+                fontSize: '22px',     // Adjust font size if needed
+            }}>
+             
+                <h1>KUPOTIFY ADMIN PANEL</h1>
 
             </header>
-
             <div id="box1" className="RightBox">
 
                 <header>
@@ -94,17 +102,214 @@ function App() {
                     </h1>
                 </header>
 
+                <div className="ItemContainer" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                    <div style={{ marginBottom: '40px' }}>
+                        <button
+                            onClick={() => fetchData(1)}
+                            style={{
+                                background: 'linear-gradient(to right, #1DB954, #075E54)',
+                                color: 'white',
+                                border: 'none',
+                                padding: '15px 20px',
+                                borderRadius: '50px',
+                                cursor: 'pointer',
+                            }}
+                        >
+                            Button 1
+                        </button>
+                        <span
+                            style={{
+                                marginLeft: '10px',
+                                color: '#009E60',                         
+                                fontFamily: 'Comic Sans MS, cursive', 
+                                fontWeight: 900, 
+                                fontSize: '20px',  
+                               // fontStyle: 'italic',  // Apply italic style
+                            }}
+                        >
+                            Label 1
+                        </span>
+                    </div>
+
+                    <div style={{ marginBottom: '40px' }}>
+                        <button
+                            onClick={() => fetchData(2)}
+                            style={{
+                                background: 'linear-gradient(to right, #1DB954, #075E54)',
+                                color: 'white',
+                                border: 'none',
+                                padding: '15px 20px',
+                                borderRadius: '50px',
+                                cursor: 'pointer',
+                            }}
+                        >
+                            Button 2
+                        </button>
+                        <span
+                            style={{
+                                marginLeft: '10px',
+                                color: '#009E60',
+                                fontFamily: 'Comic Sans MS, cursive',
+                                fontWeight: 900,
+                                fontSize: '20px',
+                                // fontStyle: 'italic',  // Apply italic style
+                            }}
+                        >
+                            Label 2
+                        </span>
+                    </div>
+
+                    <div style={{ marginBottom: '40px' }}>
+                        <button
+                            onClick={() => fetchData(3)}
+                            style={{
+                                background: 'linear-gradient(to right, #1DB954, #075E54)',
+                                color: 'white',
+                                border: 'none',
+                                padding: '15px 20px',
+                                borderRadius: '50px',
+                                cursor: 'pointer',
+                            }}
+                        >
+                            Button 3
+                        </button>
+                        <span
+                            style={{
+                                marginLeft: '10px',
+                                color: '#009E60',
+                                fontFamily: 'Comic Sans MS, cursive',
+                                fontWeight: 900,
+                                fontSize: '20px',
+                                // fontStyle: 'italic',  // Apply italic style
+                            }}
+                        >
+                            Label 3
+                        </span>
+                    </div>
+
+                    <div style={{ marginBottom: '40px' }}>
+                        <button
+                            onClick={() => fetchData(4)}
+                            style={{
+                                background: 'linear-gradient(to right, #1DB954, #075E54)',
+                                color: 'white',
+                                border: 'none',
+                                padding: '15px 20px',
+                                borderRadius: '50px',
+                                cursor: 'pointer',
+                            }}
+                        >
+                            Button 4
+                        </button>
+                        <span
+                            style={{
+                                marginLeft: '10px',
+                                color: '#009E60',
+                                fontFamily: 'Comic Sans MS, cursive',
+                                fontWeight: 900,
+                                fontSize: '20px',
+                                // fontStyle: 'italic',  // Apply italic style
+                            }}
+                        >
+                            Label 4
+                        </span>
+                    </div>
+
+                    <div style={{ marginBottom: '40px' }}>
+                        <button
+                            onClick={() => fetchData(5)}
+                            style={{
+                                background: 'linear-gradient(to right, #1DB954, #075E54)',
+                                color: 'white',
+                                border: 'none',
+                                padding: '15px 20px',
+                                borderRadius: '50px',
+                                cursor: 'pointer',
+                            }}
+                        >
+                            Button 5
+                        </button>
+                        <span
+                            style={{
+                                marginLeft: '10px',
+                                color: '#009E60',
+                                fontFamily: 'Comic Sans MS, cursive',
+                                fontWeight: 900,
+                                fontSize: '20px',
+                                // fontStyle: 'italic',  // Apply italic style
+                            }}
+                        >
+                            Label 5
+                        </span>
+                    </div>
+
+                    <div style={{ marginBottom: '40px' }}>
+                        <button
+                            onClick={() => fetchData(6)}
+                            style={{
+                                background: 'linear-gradient(to right, #1DB954, #075E54)',
+                                color: 'white',
+                                border: 'none',
+                                padding: '15px 20px',
+                                borderRadius: '50px',
+                                cursor: 'pointer',
+                            }}
+                        >
+                            Button 6
+                        </button>
+                        <span
+                            style={{
+                                marginLeft: '10px',
+                                color: '#009E60',
+                                fontFamily: 'Comic Sans MS, cursive',
+                                fontWeight: 900,
+                                fontSize: '20px',
+                                // fontStyle: 'italic',  // Apply italic style
+                            }}
+                        >
+                            Label 6
+                        </span>
+                    </div>
+
+                    <div style={{ marginBottom: '40px' }}>
+                        <button
+                            onClick={() => fetchData(7)}
+                            style={{
+                                background: 'linear-gradient(to right, #1DB954, #075E54)',
+                                color: 'white',
+                                border: 'none',
+                                padding: '15px 20px',
+                                borderRadius: '50px',
+                                cursor: 'pointer',
+                            }}
+                        >
+                            Button 7
+                        </button>
+                        <span
+                            style={{
+                                marginLeft: '10px',
+                                color: '#009E60',
+                                fontFamily: 'Comic Sans MS, cursive',
+                                fontWeight: 900,
+                                fontSize: '20px',
+                                // fontStyle: 'italic',  // Apply italic style
+                            }}
+                        >
+                            Label 7
+                        </span>
+                    </div>
+                </div>
+
 
 
                 {data.map((item, index) => (
                     <div key={index} className="ItemContainer">
                         <p>{item.code}</p>
-                        <button onClick={handleClick}>Clicke Me</button>
+                        <button onClick={handleClick}>Click Me</button>
                     </div>
                 ))}
-
-
             </div>
+
 
 
             <div id="box2" className="RightBox">
@@ -145,7 +350,7 @@ function App() {
             <div id="box3" className="LeftBox">
                 <header>
                     <h1 style={{ color: 'white' }}>
-                        OUTPUT: 
+                        Retrieval Terminal: 
                     </h1>
                 </header>
                 {/* Add your content here */}
