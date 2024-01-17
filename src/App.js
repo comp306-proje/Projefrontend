@@ -291,17 +291,38 @@ function App() {
 
                 <form onSubmit={handleSubmit}>
 
-                    <label style={{ color: 'white' }}>
+                    <label style={{
+                        marginLeft: '10px',
+                        color: '#009E60',
+                        fontFamily: 'Comic Sans MS, cursive',
+                        fontWeight: 900,
+                        fontSize: '15px',
+                        // fontStyle: 'italic',  // Apply italic style
+                    }}>
                         Name:
                         <input type="text" value={nameOfUser} onChange={(e) => setName(e.target.value)} />
                     </label>
 
-                    <label style={{ color: 'white' }}>
+                    <label style={{
+                        marginLeft: '10px',
+                        color: '#009E60',
+                        fontFamily: 'Comic Sans MS, cursive',
+                        fontWeight: 900,
+                        fontSize: '15px',
+                        // fontStyle: 'italic',  // Apply italic style
+                    }}>
                         NickName:
                         <input type="text" value={nickNameOfUser} onChange={(e) => setNickName(e.target.value)} />
                     </label>
 
-                    <label style={{ color: 'white' }}>
+                    <label style={{
+                        marginLeft: '10px',
+                        color: '#009E60',
+                        fontFamily: 'Comic Sans MS, cursive',
+                        fontWeight: 900,
+                        fontSize: '15px',
+                        // fontStyle: 'italic',  // Apply italic style
+                    }}>
                         Gender:
                         <select value={genderOfUser} onChange={(e) => setGender(e.target.value)}>
                             <option value=""></option>
@@ -310,7 +331,17 @@ function App() {
                         </select>
                     </label>
 
-                    <button type="submit">Submit</button>
+                    <button type="submit"
+                        style={{
+                            background: 'linear-gradient(to right, #1DB954, #075E54)',
+                            color: 'white',
+                            border: 'none',
+                            padding: '5px 8px',
+                            borderRadius: '50px',
+                            cursor: 'pointer',
+                        }}>Submit
+
+                    </button>
                 </form>
 
             </div>
