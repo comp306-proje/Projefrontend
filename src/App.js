@@ -90,7 +90,7 @@ function App() {
                                 cursor: 'pointer',
                             }}
                         >
-                            Button 1
+                            Fetch
                         </button>
                         <span
                             style={{
@@ -102,7 +102,7 @@ function App() {
                                // fontStyle: 'italic',  // Apply italic style
                             }}
                         >
-                            Label 1
+                            Return information about artist and the total "Pop" song count of them
                         </span>
                     </div>
 
@@ -118,7 +118,7 @@ function App() {
                                 cursor: 'pointer',
                             }}
                         >
-                            Button 2
+                            Fetch
                         </button>
                         <span
                             style={{
@@ -130,7 +130,7 @@ function App() {
                                 // fontStyle: 'italic',  // Apply italic style
                             }}
                         >
-                            Label 2
+                            Artists who were born after '2000' 
                         </span>
                     </div>
 
@@ -146,7 +146,7 @@ function App() {
                                 cursor: 'pointer',
                             }}
                         >
-                            Button 3
+                            Fetch
                         </button>
                         <span
                             style={{
@@ -158,7 +158,7 @@ function App() {
                                 // fontStyle: 'italic',  // Apply italic style
                             }}
                         >
-                            Label 3
+                            List of favourite artists and count of users who have favourited them
                         </span>
                     </div>
 
@@ -174,7 +174,7 @@ function App() {
                                 cursor: 'pointer',
                             }}
                         >
-                            Button 4
+                            Fetch
                         </button>
                         <span
                             style={{
@@ -186,7 +186,7 @@ function App() {
                                 // fontStyle: 'italic',  // Apply italic style
                             }}
                         >
-                            Label 4
+                            The count of female users for each favorite genre
                         </span>
                     </div>
 
@@ -202,7 +202,7 @@ function App() {
                                 cursor: 'pointer',
                             }}
                         >
-                            Button 5
+                            Fetch
                         </button>
                         <span
                             style={{
@@ -214,7 +214,7 @@ function App() {
                                 // fontStyle: 'italic',  // Apply italic style
                             }}
                         >
-                            Label 5
+                            The count of users who were born after the year 2000 for each favorite artist
                         </span>
                     </div>
 
@@ -230,7 +230,7 @@ function App() {
                                 cursor: 'pointer',
                             }}
                         >
-                            Button 6
+                            Fetch
                         </button>
                         <span
                             style={{
@@ -242,7 +242,7 @@ function App() {
                                 // fontStyle: 'italic',  // Apply italic style
                             }}
                         >
-                            Label 6
+                            The most liked songs along with the total number of likes for each song
                         </span>
                     </div>
 
@@ -258,7 +258,7 @@ function App() {
                                 cursor: 'pointer',
                             }}
                         >
-                            Button 7
+                            Fetch
                         </button>
                         <span
                             style={{
@@ -270,7 +270,7 @@ function App() {
                                 // fontStyle: 'italic',  // Apply italic style
                             }}
                         >
-                            Label 7
+                            The most liked songs in the 'Pop' category along with the total number of likes for each song (from all songs)
                         </span>
                     </div>
                 </div>
