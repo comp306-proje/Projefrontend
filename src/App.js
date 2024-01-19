@@ -498,6 +498,60 @@ function App() {
             </div>
 
 
+            <button id="AllUsers" onClick={() => fetchData(8)}
+                style={{
+                    background: 'linear-gradient(to right, #1DB954, #075E54)',
+                    color: 'white',
+                    border: 'none',
+                    padding: '15px 20px',
+                    borderRadius: '50px',
+                    cursor: 'pointer',
+                }}
+            >
+                All Users
+            </button>
+
+            <button id="AllSongs" onClick={() => fetchData(9)}
+                style={{
+                    background: 'linear-gradient(to right, #1DB954, #075E54)',
+                    color: 'white',
+                    border: 'none',
+                    padding: '15px 20px',
+                    borderRadius: '50px',
+                    cursor: 'pointer',
+                }}
+            >
+                All Songs
+            </button>
+
+            <button id="AllArtists" onClick={() => fetchData(10)}
+                style={{
+                    background: 'linear-gradient(to right, #1DB954, #075E54)',
+                    color: 'white',
+                    border: 'none',
+                    padding: '15px 20px',
+                    borderRadius: '50px',
+                    cursor: 'pointer',
+                }}
+            >
+                All Artists
+            </button>
+
+            <button id="AllAlbums" onClick={() => fetchData(11)}
+                style={{
+                    background: 'linear-gradient(to right, #1DB954, #075E54)',
+                    color: 'white',
+                    border: 'none',
+                    padding: '15px 20px',
+                    borderRadius: '50px',
+                    cursor: 'pointer',
+                }}
+            >
+                All Albums
+            </button>
+
+
+
             <div id="box3" className="LeftBox">
                 <header>
                     <h1 style={{ color: 'white' }}>
@@ -516,8 +570,12 @@ function App() {
                     </div>
                 ))}
 
-                {/* Add your content here */}
+                
             </div>
+
+            
+
+
 
         </div>
     );
