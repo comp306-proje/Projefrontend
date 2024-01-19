@@ -19,26 +19,28 @@ function App() {
       fetchData();
     }, []);*/
     
-    const fetchData = async (numberParam) => {
+    const fetchData = async (numberParam, artistName = "", songGenre = "") => {
+
+        const params = new URLSearchParams({
+            number: numberParam,
+            artist: artistName,
+            genre: songGenre
+        });
+
         try {
-            const response = await fetch(`http://localhost:3001/api/data?number=${numberParam}`);
+            const response = await fetch(`http://localhost:3001/api/data?${params.toString()}`);
             const result = await response.json();
             setData(result);
         } catch (error) {
+            alert(error);
             console.error('Error fetching data:', error);
         }
-    };
-
-
-    const handleClick = () => {
-        alert('Button ammm!');
-        fetchData(2);
-    };
+    };  
 
 
     const [nameOfUser, setName] = useState('');
 
-    const [nickNameOfUser, setNickName] = useState('');
+    const [musicGenre, setMusicGenre] = useState('');
 
     const [genderOfUser, setGender] = useState('');
 
@@ -46,10 +48,8 @@ function App() {
     const handleSubmit = (event) => {
         event.preventDefault();
         // You can perform actions with the input value here
-        console.log('Name', nameOfUser);
-        console.log('NickName', nickNameOfUser);
-        console.log("Gender", genderOfUser);
-        fetchData(1);
+       
+        fetchData(12);
     };
 
     return (
@@ -303,18 +303,8 @@ function App() {
                         Name:
                         <input type="text" value={nameOfUser} onChange={(e) => setName(e.target.value)} />
                     </label>
-
-                    <label style={{
-                        marginLeft: '10px',
-                        color: '#009E60',
-                        fontFamily: 'Comic Sans MS, cursive',
-                        fontWeight: 900,
-                        fontSize: '15px',
-                        // fontStyle: 'italic',  // Apply italic style
-                    }}>
-                        NickName:
-                        <input type="text" value={nickNameOfUser} onChange={(e) => setNickName(e.target.value)} />
-                    </label>
+                                      
+                                    
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <label style={{
                         marginLeft: '10px',
@@ -324,12 +314,34 @@ function App() {
                         fontSize: '15px',
                         // fontStyle: 'italic',  // Apply italic style
                     }}>
-                        Gender:
-                        <select value={genderOfUser} onChange={(e) => setGender(e.target.value)}>
-                            <option value=""></option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                        </select>
+                            Music Genre:
+                            <select value={musicGenre} defaultValue = "" onChange={(e) => setMusicGenre(e.target.value)}>
+                                <option value=""></option>
+                                <option value="Hip-Hop">Hip-Hop</option>
+                                <option value="R&B">R&B</option>
+                                <option value="Reggaeton">Reggaeton</option>
+                                <option value="Pop">Pop</option>
+                                <option value="Country">Country</option>
+                                <option value="Rock">Rock</option>
+                                <option value="Alternative">Alternative</option>
+                                <option value="Hip-Hop/Rap">Hip-Hop/Rap</option>
+                                <option value="Pop/Electronic">Pop/Electronic</option>
+                                <option value="Hip Hop">Hip Hop</option>
+                                <option value="Latin">Latin</option>
+                                <option value="Electronic">Electronic</option>
+                                <option value="Reggae">Reggae</option>
+                                <option value="Folk">Folk</option>
+                                <option value="Latin Pop">Latin Pop</option>
+                                <option value="Psychedelic Rock">Psychedelic Rock</option>
+                                <option value="Psychedelic Pop">Psychedelic Pop</option>
+                                <option value="Metalcore">Metalcore</option>
+                                <option value="Emo Rap">Emo Rap</option>
+                                <option value="Pop Punk">Pop Punk</option>
+                                <option value="Pop Rock">Pop Rock</option>
+                                <option value="K-Hip Hop">K-Hip Hop</option>
+                                
+                                
+                            </select>
                         </label>
                     </div>
 
@@ -344,155 +356,7 @@ function App() {
                             cursor: 'pointer',
                         }}>Submit
 
-                        </button>
-
-                    <div style={{ clear: 'both' }}></div>
-
-                    <label style={{
-                        marginLeft: '10px',
-                        color: '#009E60',
-                        fontFamily: 'Comic Sans MS, cursive',
-                        fontWeight: 900,
-                        fontSize: '15px',
-                        // fontStyle: 'italic',  // Apply italic style
-                    }}>
-                        ALAN 1:
-                        <input type="text" value={nameOfUser} onChange={(e) => setName(e.target.value)} />
-                    </label>
-
-                    <label style={{
-                        marginLeft: '10px',
-                        color: '#009E60',
-                        fontFamily: 'Comic Sans MS, cursive',
-                        fontWeight: 900,
-                        fontSize: '15px',
-                        // fontStyle: 'italic',  // Apply italic style
-                    }}>
-                        ALAN 2:
-                        <input type="text" value={nickNameOfUser} onChange={(e) => setNickName(e.target.value)} />
-                    </label>
-
-                    <label style={{
-                        marginLeft: '10px',
-                        color: '#009E60',
-                        fontFamily: 'Comic Sans MS, cursive',
-                        fontWeight: 900,
-                        fontSize: '15px',
-                        // fontStyle: 'italic',  // Apply italic style
-                    }}>
-                        
-                    </label>
-
-                    <button type="submit"
-                        style={{
-                            background: 'linear-gradient(to right, #1DB954, #075E54)',
-                            color: 'white',
-                            border: 'none',
-                            padding: '5px 8px',
-                            borderRadius: '50px',
-                            cursor: 'pointer',
-                        }}>Submit
-
-                    </button>
-
-                    <div style={{ clear: 'both' }}></div>
-
-
-                    <label style={{
-                        marginLeft: '10px',
-                        color: '#009E60',
-                        fontFamily: 'Comic Sans MS, cursive',
-                        fontWeight: 900,
-                        fontSize: '15px',
-                        // fontStyle: 'italic',  // Apply italic style
-                    }}>
-                        ALAN 1:
-                        <input type="text" value={nameOfUser} onChange={(e) => setName(e.target.value)} />
-                    </label>
-
-                    <label style={{
-                        marginLeft: '10px',
-                        color: '#009E60',
-                        fontFamily: 'Comic Sans MS, cursive',
-                        fontWeight: 900,
-                        fontSize: '15px',
-                        // fontStyle: 'italic',  // Apply italic style
-                    }}>
-                        ALAN 2:
-                        <input type="text" value={nickNameOfUser} onChange={(e) => setNickName(e.target.value)} />
-                    </label>
-
-                    <label style={{
-                        marginLeft: '10px',
-                        color: '#009E60',
-                        fontFamily: 'Comic Sans MS, cursive',
-                        fontWeight: 900,
-                        fontSize: '15px',
-                        // fontStyle: 'italic',  // Apply italic style
-                    }}>
-
-                    </label>
-
-                    <button type="submit"
-                        style={{
-                            background: 'linear-gradient(to right, #1DB954, #075E54)',
-                            color: 'white',
-                            border: 'none',
-                            padding: '5px 8px',
-                            borderRadius: '50px',
-                            cursor: 'pointer',
-                        }}>Submit
-
-                    </button>
-
-                    <div style={{ clear: 'both' }}></div>
-
-                    <label style={{
-                        marginLeft: '10px',
-                        color: '#009E60',
-                        fontFamily: 'Comic Sans MS, cursive',
-                        fontWeight: 900,
-                        fontSize: '15px',
-                        // fontStyle: 'italic',  // Apply italic style
-                    }}>
-                        ALAN 1:
-                        <input type="text" value={nameOfUser} onChange={(e) => setName(e.target.value)} />
-                    </label>
-
-                    <label style={{
-                        marginLeft: '10px',
-                        color: '#009E60',
-                        fontFamily: 'Comic Sans MS, cursive',
-                        fontWeight: 900,
-                        fontSize: '15px',
-                        // fontStyle: 'italic',  // Apply italic style
-                    }}>
-                        ALAN 2:
-                        <input type="text" value={nickNameOfUser} onChange={(e) => setNickName(e.target.value)} />
-                    </label>
-
-                    <label style={{
-                        marginLeft: '10px',
-                        color: '#009E60',
-                        fontFamily: 'Comic Sans MS, cursive',
-                        fontWeight: 900,
-                        fontSize: '15px',
-                        // fontStyle: 'italic',  // Apply italic style
-                    }}>
-
-                    </label>
-
-                    <button type="submit"
-                        style={{
-                            background: 'linear-gradient(to right, #1DB954, #075E54)',
-                            color: 'white',
-                            border: 'none',
-                            padding: '5px 8px',
-                            borderRadius: '50px',
-                            cursor: 'pointer',
-                        }}>Submit
-
-                    </button>
+                    </button>                    
                 </form>
 
             </div>
