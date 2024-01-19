@@ -101,3 +101,29 @@ button {
     left: 1%;
 }
 
+#AllSongs {
+    position: absolute;
+    top: 2200%;
+    left: 1%;
+}
+
+#AllUsers {
+    position: absolute;
+    top: 2200%;
+    left: 10%;
+}
+
+#AllAlbums {
+    position: absolute;
+    top: 2200%;
+    left: 19%;
+}
+
+#AllArtists {
+    position: absolute;
+    top: 2200%;
+    left: 28%;
+}
+
+
+
