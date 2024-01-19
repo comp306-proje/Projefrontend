@@ -5,20 +5,8 @@ function App() {
 
     const [data, setData] = useState([]);
 
-    /*useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const response = await fetch('http://localhost:3001/api/data');
-          const result = await response.json();
-          setData(result);
-        } catch (error) {
-          console.error('Error fetching data:', error);
-        }
-      };
-  
-      fetchData();
-    }, []);*/
-    
+
+
     const fetchData = async (numberParam, artistName = "", songGenre = "") => {
 
         const params = new URLSearchParams({
@@ -30,28 +18,44 @@ function App() {
         try {
             const response = await fetch(`http://localhost:3001/api/data?${params.toString()}`);
             const result = await response.json();
+
+
             setData(result);
+
         } catch (error) {
             alert(error);
             console.error('Error fetching data:', error);
         }
-    };  
+    };
 
 
     const [nameOfUser, setName] = useState('');
 
     const [musicGenre, setMusicGenre] = useState('');
 
-    const [genderOfUser, setGender] = useState('');
+    const [songToInsert, setSongToInsert] = useState('');
+    const [albumToInsert, setAlbumToInsert] = useState('');
+    const [songGenreToInsert, setSongGenreToInsert] = useState('');
+
+
 
 
     const handleSubmit = (event) => {
         event.preventDefault();
         // You can perform actions with the input value here
-       
-        fetchData(12,nameOfUser,musicGenre);
+
+        fetchData(12, nameOfUser, musicGenre);
 
     };
+
+    const handleInsertSong = (event) => {
+        event.preventDefault();
+        // You can perform actions with the input value here
+
+        fetchData();
+
+    };
+
 
     return (
 
@@ -65,8 +69,8 @@ function App() {
                 fontWeight: 'bold',   // Adjust font weight if needed
                 fontSize: '22px',     // Adjust font size if needed
             }}>
-              
-               
+
+
                 <h1>KUPOTIFY ADMIN PANEL</h1>
 
             </header>
@@ -96,11 +100,11 @@ function App() {
                         <span
                             style={{
                                 marginLeft: '10px',
-                                color: '#009E60',                         
-                                fontFamily: 'Comic Sans MS, cursive', 
-                                fontWeight: 900, 
-                                fontSize: '20px',  
-                               // fontStyle: 'italic',  // Apply italic style
+                                color: '#009E60',
+                                fontFamily: 'Comic Sans MS, cursive',
+                                fontWeight: 900,
+                                fontSize: '20px',
+                                // fontStyle: 'italic',  // Apply italic style
                             }}
                         >
                             Return information about artist and the total "Pop" song count of them
@@ -131,7 +135,7 @@ function App() {
                                 // fontStyle: 'italic',  // Apply italic style
                             }}
                         >
-                            Artists who were born after '2000' 
+                            Artists who were born after '2000'
                         </span>
                     </div>
 
@@ -278,7 +282,7 @@ function App() {
 
 
 
-               
+
             </div>
 
 
@@ -304,19 +308,19 @@ function App() {
                         Name:
                         <input type="text" value={nameOfUser} onChange={(e) => setName(e.target.value)} />
                     </label>
-                                      
-                                    
+
+
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <label style={{
-                        marginLeft: '10px',
-                        color: '#009E60',
-                        fontFamily: 'Comic Sans MS, cursive',
-                        fontWeight: 900,
-                        fontSize: '15px',
-                        // fontStyle: 'italic',  // Apply italic style
-                    }}>
+                        <label style={{
+                            marginLeft: '10px',
+                            color: '#009E60',
+                            fontFamily: 'Comic Sans MS, cursive',
+                            fontWeight: 900,
+                            fontSize: '15px',
+                            // fontStyle: 'italic',  // Apply italic style
+                        }}>
                             Music Genre:
-                            <select value={musicGenre} defaultValue = "" onChange={(e) => setMusicGenre(e.target.value)}>
+                            <select value={musicGenre} defaultValue="" onChange={(e) => setMusicGenre(e.target.value)}>
                                 <option value=""></option>
                                 <option value="Hip-Hop">Hip-Hop</option>
                                 <option value="R&B">R&B</option>
@@ -340,8 +344,8 @@ function App() {
                                 <option value="Pop Punk">Pop Punk</option>
                                 <option value="Pop Rock">Pop Rock</option>
                                 <option value="K-Hip Hop">K-Hip Hop</option>
-                                
-                                
+
+
                             </select>
                         </label>
                     </div>
@@ -357,8 +361,104 @@ function App() {
                             cursor: 'pointer',
                         }}>Submit
 
-                    </button>                    
+                    </button>
                 </form>
+
+                // Starting
+
+                <form onSubmit={handleInsertSong}>
+
+                    <label style={{
+                        marginLeft: '10px',
+                        color: '#009E60',
+                        fontFamily: 'Comic Sans MS, cursive',
+                        fontWeight: 900,
+                        fontSize: '15px',
+                        // fontStyle: 'italic',  // Apply italic style
+                    }}>
+                        Song Name:
+                        <input type="text" value={songToInsert} onChange={(e) => setSongToInsert(e.target.value)} />
+                    </label>
+                    <br></br>
+
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        <label style={{
+                            marginLeft: '10px',
+                            color: '#009E60',
+                            fontFamily: 'Comic Sans MS, cursive',
+                            fontWeight: 900,
+                            fontSize: '15px',
+                            // fontStyle: 'italic',  // Apply italic style
+                        }}>
+                            Music Genre of Song:
+                            <select value={songGenreToInsert} defaultValue="" onChange={(e) => setSongGenreToInsert(e.target.value)}>
+                                <option value=""></option>
+                                <option value="Hip-Hop">Hip-Hop</option>
+                                <option value="R&B">R&B</option>
+                                <option value="Reggaeton">Reggaeton</option>
+                                <option value="Pop">Pop</option>
+                                <option value="Country">Country</option>
+                                <option value="Rock">Rock</option>
+                                <option value="Alternative">Alternative</option>
+                                <option value="Hip-Hop/Rap">Hip-Hop/Rap</option>
+                                <option value="Pop/Electronic">Pop/Electronic</option>
+                                <option value="Hip Hop">Hip Hop</option>
+                                <option value="Latin">Latin</option>
+                                <option value="Electronic">Electronic</option>
+                                <option value="Reggae">Reggae</option>
+                                <option value="Folk">Folk</option>
+                                <option value="Latin Pop">Latin Pop</option>
+                                <option value="Psychedelic Rock">Psychedelic Rock</option>
+                                <option value="Psychedelic Pop">Psychedelic Pop</option>
+                                <option value="Metalcore">Metalcore</option>
+                                <option value="Emo Rap">Emo Rap</option>
+                                <option value="Pop Punk">Pop Punk</option>
+                                <option value="Pop Rock">Pop Rock</option>
+                                <option value="K-Hip Hop">K-Hip Hop</option>
+
+
+                            </select>
+                        </label>
+                    </div>
+                    <br></br>
+
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        <label style={{
+                            marginLeft: '10px',
+                            color: '#009E60',
+                            fontFamily: 'Comic Sans MS, cursive',
+                            fontWeight: 900,
+                            fontSize: '15px',
+                            // fontStyle: 'italic',  // Apply italic style
+                        }}>
+                            Album of Song:
+                            <select value={albumToInsert} defaultValue="" onChange={(e) => setAlbumToInsert(e.target.value)}>
+
+                               
+
+
+                            </select>
+                        </label>
+                    </div>
+
+                    <br></br>
+
+
+                    <button type="submit"
+                        style={{
+                            background: 'linear-gradient(to right, #1DB954, #075E54)',
+                            color: 'white',
+                            border: 'none',
+                            padding: '5px 8px',
+                            borderRadius: '50px',
+                            cursor: 'pointer',
+                        }}>Submit
+
+                    </button>
+
+                </form>
+
+// Ending
 
             </div>
 
@@ -420,7 +520,7 @@ function App() {
             <div id="box3" className="LeftBox">
                 <header>
                     <h1 style={{ color: 'white' }}>
-                        Retrieval Terminal: 
+                        Retrieval Terminal:
                     </h1>
                 </header>
 
@@ -428,17 +528,17 @@ function App() {
                 {data.map((item, index) => (
                     <div key={index} className="ItemContainer">
                         {Object.keys(item).map((column, columnIndex) => (
-                            <div key={columnIndex} className="Column" style={{ color: "white", width: '150px'}}>
+                            <div key={columnIndex} className="Column" style={{ color: "white", width: '150px' }}>
                                 {item[column]}
                             </div>
                         ))}
                     </div>
                 ))}
 
-                
+
             </div>
 
-            
+
 
 
 
