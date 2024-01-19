@@ -49,7 +49,8 @@ function App() {
         event.preventDefault();
         // You can perform actions with the input value here
        
-        fetchData(12);
+        fetchData(12,nameOfUser,musicGenre);
+
     };
 
     return (
