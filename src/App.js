@@ -7,16 +7,12 @@ function App() {
 
     const [options, setOptions] = useState([]);
 
-    const [middleData, setMiddleData] = useState([]);
-
-    const [middleData2, setMiddleData2] = useState([]);
-
-    const [middleData3, setMiddleData3] = useState([]);
+    const [albums, setAlbums] = useState([]);
 
     useEffect(() => {
         const fetchDataFromDatabase = async () => {
             try {
-                const response = await fetch(`http://localhost:3001/api/data?number=13`);
+                const response = await fetch(`http://localhost:3001/api/data?number=17`);
                 const data = await response.json();
                 setOptions(data);
                 console.log(options);
@@ -50,30 +46,23 @@ function App() {
         }
     };
 
-    const fetchMiddleData = async (numberParam,song = "", songGenre = "", album = "", songID = 1) => {
+    const fetchMiddleData = async (numberParam,song = "", songGenre = "", album = "", songID = 1, artistName = "", albumID = 1) => {
 
         const params = new URLSearchParams({
             number: numberParam,
             songName: song,
             genreToInsert: songGenre,
             albumName: album,
-            songID: songID
+            songID: songID,
+            artistNameToFilter: artistName,
+            albumID: albumID,
         });
 
         try {
             const response = await fetch(`http://localhost:3001/api/data?${params.toString()}`);
             const result = await response.json();
-           
-            if(numberParam == 15){
-                fetchMiddleData(14,songToInsert,songGenreToInsert,"",result[0]["max(songID) + 1"]); 
-            }
-            else if(numberParam == 16){
-                setMiddleData2(result);
-            }
 
-            else if(numberParam == 17){
-                setMiddleData3(result);
-            }
+            return result;
             
 
         } catch (error) {
@@ -84,12 +73,13 @@ function App() {
 
 
     const [nameOfUser, setName] = useState('');
-
     const [musicGenre, setMusicGenre] = useState('');
-
     const [songToInsert, setSongToInsert] = useState('');
     const [albumToInsert, setAlbumToInsert] = useState('');
     const [songGenreToInsert, setSongGenreToInsert] = useState('');
+    const [artistNameToFilter, setArtistNameToFilter] = useState('');
+    const [songIDToDelete, setSongIDToDelete] = useState('');
+    const [songNameToDelete, setsongNameToDelete] = useState('');
 
 
 
@@ -102,27 +92,65 @@ function App() {
 
     };
 
-    const handleInsertSong = (event) => {
+    const handleInsertSong = async (event) => {
 
         event.preventDefault();
-        fetchMiddleData(15);
-        fetchMiddleData(16,"","",albumToInsert);
 
-        //console.log(middleData);
-        //console.log(middleData2);
+        if (!albumToInsert || !artistNameToFilter || !songToInsert || !songGenreToInsert) {
+            alert("Please fill all the necessary information to insert a song");
+        }
 
-        //fetchMiddleData(14,songToInsert,songGenreToInsert,"",middleData);
-       
-        //helper();
-        //fetchMiddleData(17,)
-        //middleData[0]["max(songID) + 1"]
+        else {
+            const songID = await fetchMiddleData(15);
+            const albumID = await fetchMiddleData(16, "", "", albumToInsert, "", artistNameToFilter);
 
+            await fetchMiddleData(14, songToInsert, songGenreToInsert, "", songID[0]["max(songID) + 1"]);
+
+            await fetchMiddleData(19, "", "", "", songID[0]["max(songID) + 1"], "", albumID[0]["albID"]);
+        }
     };
 
-    const helper = () => {
+    const handleDelete = async (event) => {
 
-        fetchMiddleData(14,songToInsert,songGenreToInsert,"",middleData);
+        event.preventDefault();
+
+        if (!songIDToDelete || songNameToDelete == "There is no such song") {
+            alert("Please give a valid songID")
+        }
+        else {
+            await fetchMiddleData(21, "", "", "", songIDToDelete);
+            await fetchMiddleData(22, "", "", "", songIDToDelete);
+            alert(`Succesfully deleted ${songNameToDelete}`);
+        }
     }
+
+    const handleArtistSelection = async (artist) => {
+
+        setArtistNameToFilter(artist);
+        const songsOfArtist = await fetchMiddleData(18, "", "", "", "", artist);
+        
+        setAlbums(songsOfArtist);
+
+    }
+
+    const handleDeleteFiltering = async (songID) => {
+
+        setSongIDToDelete(songID);
+
+        if (songID) {           
+
+            const songName = await fetchMiddleData(20, "", "", "", songID);
+
+            if (songName.length == 0) {
+                setsongNameToDelete("There is no such song");
+            }
+            else {
+                setsongNameToDelete(songName[0]["songName"]);
+            }
+        }
+    }
+
+    
 
     
 
@@ -375,7 +403,7 @@ function App() {
                         fontSize: '15px',
                         
                     }}>
-                        Name:
+                        Artist Name:
                         <input type="text" value={nameOfUser} onChange={(e) => setName(e.target.value)} />
                     </label>
 
@@ -429,12 +457,12 @@ function App() {
                             padding: '5px 8px',
                             borderRadius: '50px',
                             cursor: 'pointer',
-                        }}>Submit
+                        }}>Filter
 
                     </button>
                 </form>
 
-                // Starting
+                <br></br>
 
                 <form onSubmit={handleInsertSong}>
 
@@ -490,7 +518,8 @@ function App() {
                             </select>
                         </label>
                     </div>
-                    <br></br>
+
+                    
 
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                         <label style={{
@@ -501,22 +530,41 @@ function App() {
                             fontSize: '15px',
                             
                         }}>
-                            Album of Song:
-                            <select value={albumToInsert} defaultValue="" onChange={(e) => setAlbumToInsert(e.target.value)}>
+                            Artist:
+                            <select value={artistNameToFilter} defaultValue="" onChange={(e) => handleArtistSelection(e.target.value)}>
 
+                                <option value=""></option>
                                 {options.map((option, index) => (
                                     <option key={index} value={option.albName}>
-                                        {option.albName}
+                                        {option.name}
                                     </option>
                                 ))}
-                                
-
                             </select>
                         </label>
                     </div>
 
-                    <br></br>
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        <label style={{
+                            marginLeft: '10px',
+                            color: '#009E60',
+                            fontFamily: 'Comic Sans MS, cursive',
+                            fontWeight: 900,
+                            fontSize: '15px',
 
+                        }}>
+                            Album of Artist:
+                            <select value={albumToInsert} defaultValue="" onChange={(e) => setAlbumToInsert(e.target.value)}>
+
+                                {albums.map((album, index) => (
+                                    <option key={index} value={album.albName}>
+                                        {album.albName}
+                                    </option>
+                                ))}
+                            </select>
+                        </label>
+                    </div>
+
+                    
 
                     <button type="submit"
                         style={{
@@ -526,13 +574,44 @@ function App() {
                             padding: '5px 8px',
                             borderRadius: '50px',
                             cursor: 'pointer',
-                        }}>Submit
+                        }}>Insert Song
 
                     </button>
 
                 </form>
 
-// Ending
+                <br></br>
+
+                <form onSubmit={handleDelete}>
+
+                    <label style={{
+                        marginLeft: '10px',
+                        color: '#009E60',
+                        fontFamily: 'Comic Sans MS, cursive',
+                        fontWeight: 900,
+                        fontSize: '15px',
+                    }}>
+                        Song ID:
+                        <input style={{ marginRight: '50px' }} type="number" pattern="[0-9]*" inputMode="numeric" value={songIDToDelete} onChange={(e) => handleDeleteFiltering(e.target.value)} />
+                        {songNameToDelete}
+                    </label>
+
+                    <br></br>
+
+                    <button type="submit"
+                        style={{
+                            background: 'linear-gradient(to right, #1DB954, #075E54)',
+                            color: 'white',
+                            border: 'none',
+                            padding: '5px 8px',
+                            borderRadius: '50px',
+                            cursor: 'pointer',
+                        }}>Delete
+                    </button>
+
+                    
+
+                </form>
 
             </div>
 
