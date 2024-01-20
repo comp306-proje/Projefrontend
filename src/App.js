@@ -7,6 +7,12 @@ function App() {
 
     const [options, setOptions] = useState([]);
 
+    const [middleData, setMiddleData] = useState([]);
+
+    const [middleData2, setMiddleData2] = useState([]);
+
+    const [middleData3, setMiddleData3] = useState([]);
+
     useEffect(() => {
         const fetchDataFromDatabase = async () => {
             try {
@@ -28,7 +34,7 @@ function App() {
         const params = new URLSearchParams({
             number: numberParam,
             artist: artistName,
-            genre: songGenre
+            genre: songGenre,
         });
 
         try {
@@ -37,6 +43,38 @@ function App() {
 
 
             setData(result);
+
+        } catch (error) {
+            alert(error);
+            console.error('Error fetching data:', error);
+        }
+    };
+
+    const fetchMiddleData = async (numberParam,song = "", songGenre = "", album = "", songID = 1) => {
+
+        const params = new URLSearchParams({
+            number: numberParam,
+            songName: song,
+            genreToInsert: songGenre,
+            albumName: album,
+            songID: songID
+        });
+
+        try {
+            const response = await fetch(`http://localhost:3001/api/data?${params.toString()}`);
+            const result = await response.json();
+           
+            if(numberParam == 15){
+                fetchMiddleData(14,songToInsert,songGenreToInsert,"",result[0]["max(songID) + 1"]); 
+            }
+            else if(numberParam == 16){
+                setMiddleData2(result);
+            }
+
+            else if(numberParam == 17){
+                setMiddleData3(result);
+            }
+            
 
         } catch (error) {
             alert(error);
@@ -66,12 +104,27 @@ function App() {
 
     const handleInsertSong = (event) => {
 
-
         event.preventDefault();
+        fetchMiddleData(15);
+        fetchMiddleData(16,"","",albumToInsert);
 
-        fetchData();
+        //console.log(middleData);
+        //console.log(middleData2);
+
+        //fetchMiddleData(14,songToInsert,songGenreToInsert,"",middleData);
+       
+        //helper();
+        //fetchMiddleData(17,)
+        //middleData[0]["max(songID) + 1"]
 
     };
+
+    const helper = () => {
+
+        fetchMiddleData(14,songToInsert,songGenreToInsert,"",middleData);
+    }
+
+    
 
 
     return (
