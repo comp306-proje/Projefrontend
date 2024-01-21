@@ -1,5 +1,5 @@
 .App {
-    position: relative; /* Set relative positioning on the container */
+    position: relative; 
     padding: 20px;
 }
 
@@ -20,9 +20,7 @@ body {
 }
 
 button {
-    /*
-        margin-top: 150px; 
-    */
+    
 }
 
 .ScrollPane {
