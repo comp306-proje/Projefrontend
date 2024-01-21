@@ -36,8 +36,6 @@ function App() {
         try {
             const response = await fetch(`http://localhost:3001/api/data?${params.toString()}`);
             const result = await response.json();
-
-
             setData(result);
 
         } catch (error) {
@@ -107,6 +105,8 @@ function App() {
             await fetchMiddleData(14, songToInsert, songGenreToInsert, "", songID[0]["max(songID) + 1"]);
 
             await fetchMiddleData(19, "", "", "", songID[0]["max(songID) + 1"], "", albumID[0]["albID"]);
+
+            alert(`Succesfully inserted ${songToInsert}`);
         }
     };
 
@@ -679,12 +679,27 @@ function App() {
 
 
                 {data.map((item, index) => (
-                    <div key={index} className="ItemContainer">
-                        {Object.keys(item).map((column, columnIndex) => (
-                            <div key={columnIndex} className="Column" style={{ color: "white", width: '150px' }}>
-                                {item[column]}
-                            </div>
-                        ))}
+
+                    <div>
+
+                        <hr
+                            style={{
+                                borderColor: 'darkgrey',
+                                backgroundColor: 'darkgrey',
+                            }}
+                        />
+
+                        <div key={index} className="ItemContainer">
+                            {Object.keys(item).map((column, columnIndex) => (
+                            
+                                <div key={columnIndex} className="Column" style={{ color: "white", width: '150px' }}>
+                                    {item[column]}                              
+                                </div>
+                          
+                            ))}
+
+
+                        </div>
                     </div>
                 ))}
 
